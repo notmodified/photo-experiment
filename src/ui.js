@@ -1,47 +1,43 @@
+const R = require("ramda");
+const h = require("hyperscript");
+const { div, article, span, a, ul, li } = require("hyperscript-helpers")(h);
 
-import mi from "mithril"
-const R = require("ramda")
+const desc = info => {
+  const content = R.path(["description", "_content"], info);
+  return R.isEmpty(R.trim(content)) ? "" : div(".photo__description", content);
+};
+
+const tagList = info => {
+  const tags = R.pathOr([], ["tags", "tag"], info);
+  return R.isEmpty(tags)
+    ? ""
+    : ul(".photo__tag-list", R.map(i => li("tag", i.raw), R.take(5, tags)));
+};
 
 const image = ({ thumb, title, info }) =>
-  mi(
-    "article",
-    { class: "photo" },
-    mi("div", { class: "photo__wrapper" }, [
-      mi("div", { class: "photo__top" }, [
-        mi("div", {
-          class: "photo__image",
+  article(
+    ".photo",
+    div(".photo__wrapper", [
+      div(".photo__top", [
+        div({
+          className: "photo__image",
           style: `background-image: url(${thumb})`
         }),
-        mi("div", { class: "photo__headline" }, [
-          mi(
-            "span",
-            { class: "photo__title" },
-            mi("a", { href: info.urls.url[0]._content }, title)
-          ),
-          mi("span", { class: "photo__by" }, "by"),
-          mi(
-            "span",
-            { class: "photo__user" },
-            mi(
-              "a",
+        div(".photo__headline", [
+          span(".photo__title", a({ href: info.urls.url[0]._content }, title)),
+          span(".photo__by", "by"),
+          span(
+            ".photo__user",
+            a(
               { href: `http://www.flickr.com/photos/${info.owner.nsid}` },
               info.owner.username
             )
           )
         ]),
-        mi("div", { class: "photo__description" }, info.description._content)
+        desc(info)
       ]),
-      mi(
-        "ul",
-        { class: "photo__tag-list" },
-        R.map(i => mi("li", { class: "tag" }, i.raw), R.take(5, info.tags.tag))
-      )
+      tagList(info)
     ])
-  )
+  );
 
-export const app = {
-  view({ attrs: { images } }) {
-    return mi("div", { class: "photo-list" }, R.map(image, images))
-  }
-};
-
+export const app = images => div(".photo-list", R.map(image, images));

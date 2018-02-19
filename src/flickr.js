@@ -9,13 +9,10 @@ export const api = (q = "cats") =>
     q
   )}&per_page=${perPage}&page=1`;
 
-export const profile = (uid) =>
-  `https://api.flickr.com/services/rest?method=flickr.profile.getProfile&format=json&nojsoncallback=1&api_key=${key}&user_id=${uid}`
-
-export const info = (pid) =>
-  `https://api.flickr.com/services/rest?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=${key}&photo_id=${pid}`
+export const info = pid =>
+  `https://api.flickr.com/services/rest?method=flickr.photos.getInfo&format=json&nojsoncallback=1&api_key=${key}&photo_id=${pid}`;
 
 const pImageUrl = (s, { farm, server, id, secret }) =>
   `https://farm${farm}.staticflickr.com/${server}/${id}_${secret}_${s}.jpg`;
 
-export const imageUrl = R.curry(pImageUrl)("t");
+export const imageUrl = R.curry(pImageUrl)("n");
