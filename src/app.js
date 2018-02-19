@@ -1,5 +1,6 @@
 import "./app.scss"
-import "babel-polyfill";
+import "babel-polyfill"
+import "whatwg-fetch"
 
 import { info, api, profile, imageUrl } from "./flickr.js"
 
