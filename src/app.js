@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         .then(r => res(R.assoc("info", r, i)));
     });
 
-  const addThumbs = i => R.assoc("thumb", imageUrl(i), i);
+  const addThumbs = R.unnest(R.compose(R.assoc("thumb"), imageUrl));
 
   const withInfo = await Promise.all(R.map(addPhotoInfo)(photos));
 
