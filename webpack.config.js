@@ -13,7 +13,7 @@ const config = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules(?!\/striptags)/,
         loaders: ['babel-loader'],
       },
       {
