@@ -20,6 +20,11 @@ const config = {
         test: /\.scss?$/,
         exclude: /node_modules/,
         loaders: ['style-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.worker\.js$/,
+        exclude: /node_modules/,
+        loaders: [{loader: 'worker-loader', options: {}}, { loader: 'babel-loader' }],
       }
     ],
   },

@@ -17,14 +17,19 @@
     "caniuse-lite": "^1.0.30000809",
     "hyperscript": "^2.0.2",
     "hyperscript-helpers": "^3.0.3",
+    "immutable": "^3.8.2",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.0",
     "postcss-nested": "^3.0.0",
+    "preact": "^8.2.7",
+    "preact-hyperscript": "^0.7.1",
     "ramda": "^0.25.0",
+    "striptags": "^3.1.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "worker-loader": "^1.1.0"
   },
   "devDependencies": {
     "prettier": "^1.10.2"
