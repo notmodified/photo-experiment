@@ -42,8 +42,6 @@ export default class Modal extends Component {
     document.addEventListener("keydown", this.closeKey.bind(this))
 
     this.interval = setInterval(() => {
-      if (this.state.open) return
-
       this.setState(Object.assign(this.state, {hi: !this.state.hi}))
       setTimeout(() => {
         this.setState(Object.assign(this.state, {hi: false}))
@@ -72,8 +70,7 @@ export default class Modal extends Component {
           h('g', { fill: 'white' }, [
             h('rect', {x: 0, y: 0, width: 9, height: 9}),
             h('rect', {x: 11, y: 0, width: 9, height: 9}),
-            h('rect', {x: 0, y: 11, width: 9, height: 9}),
-            h('rect', {x: 11, y: 11, width: 9, height: 9}),
+            h('rect', {x: 5.5, y: 11, width: 9, height: 9}),
           ])
         ])
       ])

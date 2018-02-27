@@ -22,6 +22,11 @@
     max-width: 20%;
   }
 
+  @media screen and (min-width: 1978px) {
+    flex: 0 0 16.66%;
+    max-width: 16.66%;
+  }
+
   padding: var(--gutter);
 
   &__description {
@@ -44,13 +49,16 @@
   }
 
   &__wrapper {
-    border: 1px solid var(--border);
+    border: 0.25rem solid #22223b;
+    background-color: white;
     min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: var(--pad);
     cursor: pointer;
+    box-shadow: 0 0 var(--border);
+    transition: box-shadow 0.2s var(--ease);
 
     &:hover {
       box-shadow: 0 0.2rem 1rem var(--border);
